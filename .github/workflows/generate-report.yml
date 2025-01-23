@@ -1,0 +1,33 @@
+name: Generate Markdown Report
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+
+            - name: Install Dependencies
+              run: |
+                  npm install
+                  npm rebuild tree-sitter
+
+            - name: Generate Report
+              run: node index.js
+
+            - name: Check Report
+              run: |
+                  if [ ! -f .github/copilot-instructions.md ]; then
+                    echo "Report file not generated!"
+                    exit 1
+                  fi

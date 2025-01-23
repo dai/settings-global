@@ -1,0 +1,22 @@
+name: "Copilot Project Structure"
+description: "Generates a project structure report in .github/copilot-instructions.md"
+
+inputs:
+  token:
+    description: "GitHub token"
+    required: true
+  paths:
+    description: "Comma-separated list of paths to scan"
+    required: false
+  commit-directly:
+    description: "Commit changes directly to branch"
+    required: false
+    default: 'false'
+  github-token:
+    description: "GitHub token for creating PRs"
+    required: false
+    default: ${{ github.token }}
+
+runs:
+  using: "node20"
+  main: "dist/index.js"

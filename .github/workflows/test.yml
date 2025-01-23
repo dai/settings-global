@@ -1,0 +1,43 @@
+name: Test Project Structure Report
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+
+            - name: Install Dependencies
+              run: |
+                  npm install
+                  npm rebuild tree-sitter
+
+            - name: Generate Report (Sample Projects Only)
+              run: node index.js "sample-js-project,sample-python-project,sample-ts-project"
+
+            - name: Verify Report Content
+              run: |
+                  if ! grep -q "## Package (js): \`sample-js-project\`" .github/copilot-instructions.md; then
+                    echo "Missing JavaScript project section"
+                    exit 1
+                  fi
+                  if ! grep -q "## Package (py): \`sample-python-project\`" .github/copilot-instructions.md; then
+                    echo "Missing Python project section"
+                    exit 1
+                  fi
+                  if ! grep -q "## Package (js): \`sample-ts-project\`" .github/copilot-instructions.md; then
+                    echo "Missing TypeScript project section"
+                    exit 1
+                  fi
