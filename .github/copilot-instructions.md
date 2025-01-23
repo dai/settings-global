@@ -1,9 +1,9 @@
-# Copilot Instructions for Project Structure Workflow
+# Copilotプロジェクト構造ワークフローの指示
 
-Just some sample instructions that should stay in place...
+いくつかのサンプル指示がそのまま残ります...
 
 <!-- BEGIN GENERATED CONTENT -->
-## Package (js): `.`
+## パッケージ (js): `.`
 
 - bin/
   - cli.js
@@ -131,7 +131,7 @@ Just some sample instructions that should stay in place...
     - anotherFunction
     - sampleFunction
 
-## Package (js): `sample-js-project`
+## パッケージ (js): `sample-js-project`
 
 - index.js
   - sampleVariable
@@ -139,7 +139,7 @@ Just some sample instructions that should stay in place...
   - anotherFunction
   - sampleFunction
 
-## Package (js): `sample-ts-project`
+## パッケージ (js): `sample-ts-project`
 
 - index.ts
   - sampleVariable
@@ -147,7 +147,7 @@ Just some sample instructions that should stay in place...
   - anotherFunction
   - sampleFunction
 
-## Package (py): `sample-python-project`
+## パッケージ (py): `sample-python-project`
 
 - main.py
   - SampleClass
